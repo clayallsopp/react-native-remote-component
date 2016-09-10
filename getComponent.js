@@ -1,4 +1,4 @@
-(function main(React, require) {
+(function main(React, ReactNative, require) {
   "use strict";
 
   var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -10,9 +10,11 @@
   function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
   var _React = React;
-  var View = _React.View;
-  var Text = _React.Text;
-  var LayoutAnimation = _React.LayoutAnimation;
+  var _ReactNative = ReactNative;
+  var StyleSheet = _ReactNative.StyleSheet;
+  var View = _ReactNative.View;
+  var Text = _ReactNative.Text;
+  var LayoutAnimation = _ReactNative.LayoutAnimation;
 
   var Test = (function (_React$Component) {
     _inherits(Test, _React$Component);
@@ -23,6 +25,12 @@
       _get(Object.getPrototypeOf(Test.prototype), "constructor", this).apply(this, arguments);
 
       this.state = { t: 0, direction: 1 };
+
+      this.styles = StyleSheet.create({
+        textColor: {
+          color: "#F00"
+        }
+      });
     }
 
     _createClass(Test, [{
@@ -52,10 +60,10 @@
       value: function render() {
         return React.createElement(
           View,
-          { style: { left: this.state.t * 100 } },
+          null,
           React.createElement(
             Text,
-            null,
+            { style: this.styles.textColor },
             "Hello from ",
             this.props.url
           )
