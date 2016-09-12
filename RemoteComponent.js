@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {Component} from 'react';
 import ReactNative, { View, Text } from 'react-native';
 
-export default class RemoteComponent extends React.Component {
+export default class RemoteComponent extends Component {
   state = {};
 
   componentDidMount() {
