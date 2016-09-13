@@ -1,6 +1,7 @@
-import React, { View, Text } from 'react-native';
+import React, {Component} from 'react';
+import ReactNative, { View, Text } from 'react-native';
 
-export default class RemoteComponent extends React.Component {
+export default class RemoteComponent extends Component {
   state = {};
 
   componentDidMount() {
@@ -8,7 +9,7 @@ export default class RemoteComponent extends React.Component {
       return response.text();
     }).then((js) => {
       let factory = eval(js);
-      let Component = factory(React);
+      let Component = factory(React,ReactNative);
       this.setState({ Component });
     });
   }
@@ -16,10 +17,12 @@ export default class RemoteComponent extends React.Component {
   render() {
     let { Component } = this.state;
     if (Component) {
-      return <Component { ...this.props } />;
+      return (<Component { ...this.props } />);
     }
-    return <View>
-      <Text>...</Text>
-    </View>;
+    return (
+      <View>
+        <Text>...</Text>
+      </View>
+    );
   }
 }
